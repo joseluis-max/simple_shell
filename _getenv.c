@@ -18,6 +18,7 @@ char *_getenv(char *var_env)
 			return (strtok(NULL, "="));
 		}
 		i++;
+		free(copy);
 	}
 	return ("Error");
 }

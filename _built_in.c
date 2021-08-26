@@ -9,10 +9,10 @@
 int _built_in(char **tokens, char *filename, int counter)
 {
 	int index = 0, s_execve, status = 0;
-	char *new_path, *PATH;
+	char *new_path, *PATH, *slash;
 	char **t_path;
 	struct stat st;
-        int fd;
+	int fd;
 
 	PATH = _getenv("PATH");
 	t_path = split_string(PATH, ":");
@@ -20,8 +20,8 @@ int _built_in(char **tokens, char *filename, int counter)
 	{
 		if (stat(tokens[0], &st) == -1)
 		{
-			new_path = _strcat(t_path[index], "/");
-			new_path = _strcat(new_path, tokens[0]);
+			slash = _strcat(t_path[index], "/");
+			new_path = _strcat(slash, tokens[0]);
 		}
 		if (stat(new_path, &st) == 0)
 		{
@@ -30,11 +30,14 @@ int _built_in(char **tokens, char *filename, int counter)
 			break;
 		}
 		index++;
-                free(new_path);
+		free(slash);
+		free(new_path);
 	}
-        if ((fd = access(tokens[0], F_OK)) == 0)
-                _check_path(tokens, filename, counter);
+	fd = access(tokens[0], F_OK);
+	if (fd == 0)
+		_check_path(tokens, filename, counter);
 	if (status == 0 && fd == -1)
 		_print_error(filename, tokens[0], counter);
+	free(t_path);
 	return (s_execve);
 }

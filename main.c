@@ -41,6 +41,7 @@ int main(int ac __attribute__((unused)), char *av[])
 				write(STDOUT_FILENO, "\n", 1);
 			return (0);
 		}
+		free(tokens);
 	}
 	return (0);
 }

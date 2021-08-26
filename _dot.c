@@ -4,5 +4,5 @@
  */
 void _dot(void)
 {
-        write(STDOUT_FILENO, "", 1);
+	write(STDOUT_FILENO, "", 1);
 }

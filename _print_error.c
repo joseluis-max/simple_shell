@@ -47,4 +47,5 @@ void _print_error(char *filename, char *command, int counter)
 	write(STDERR_FILENO, command, _strlen(command));
 	write(STDERR_FILENO, ": ", 3);
 	perror("");
+	free(numberInString);
 }
