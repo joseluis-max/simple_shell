@@ -8,17 +8,18 @@ char *_getenv(char *var_env)
 {
 	int i = 0;
 	char *copy;
-	char *env;
+	char *env, *rel;
 
 	while (environ[i] != NULL)
 	{       copy = _strdup(environ[i]);
 		env = strtok(copy, "=");
 		if (_strcmp(env, var_env) == 0)
 		{
-			return (strtok(NULL, "="));
+			rel = strtok(NULL, "=");
+			free(env);
 		}
 		i++;
 		free(copy);
 	}
-	return ("Error");
+	return (rel);
 }

@@ -27,6 +27,8 @@ int _built_in(char **tokens, char *filename, int counter)
 		{
 			status = 1;
 			s_execve = _execute(new_path, filename, tokens, counter);
+			free(slash);
+			free(new_path);
 			break;
 		}
 		index++;
