@@ -34,5 +34,6 @@ int _execute_nb(char **tokens, int counter);
 void _dot(void);
 size_t _strlen(char *s);
 void _print_error(char *filename, char *command, int counter);
+void _check_path(char **tokens, char *filename, int counter);
 
 #endif
