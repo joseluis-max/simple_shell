@@ -1,0 +1,24 @@
+./" Man page for _shell
+./" Contact luisj.valdiviezo20@gmail.com, 3469@holbertonschool.com,  3520@holbertonschool.com, to correct errors or types.
+.TH man 3 "26 AUG 2021" "1.0" "_shell"
+.SH NAME
+Shell
+.SH SYPNOPSIS
+To initialize our shell in interactive mode we must execute $. / hsh inside the terminal
+or in non-interactive mode we execute echo "command" | ./hsh. In interactive mode our shell
+receives commands with ls following structure command -flags filename1 filename2
+.SH DESCRIPTION
+This is our own version of shell (sh) on linux.
+.SH OPTIONS
+- ls
+- pwd
+- date
+- man
+- help
+- echo
+- exit
+- env
+.SH AUTOR
+Jose Valdiviezo (luisj.valdiviezo20@gmail.com) | Yudi Angola (3469@holbertonschool.com) | Sandra Hoyos (3520@holbertonschool.com)
+.SH COPYRIGHT
+This code is under a MIT license. 
