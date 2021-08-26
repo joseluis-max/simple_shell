@@ -17,7 +17,7 @@ int _execute(char *new_path, char *filename, char **tokens, int counter)
 	{
 		if (pid == 0)
 		{
-			s_execve = execve(new_path, tokens, NULL);
+			s_execve = execve(new_path, tokens, environ);
 			if (s_execve == -1)
 				_print_error(filename, tokens[0], counter);
 		}
