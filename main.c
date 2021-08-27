@@ -40,10 +40,12 @@ int main(int ac __attribute__((unused)), char *av[])
 			free(buffer);
 			if (isatty(STDIN_FILENO) != 0)
 				write(STDOUT_FILENO, "\n", 1);
+			exit(EXIT_SUCCESS);
 			return (0);
 		}
 		else
 			free(buffer);
 	}
+	exit(EXIT_SUCCESS);
 	return (0);
 }

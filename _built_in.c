@@ -31,8 +31,7 @@ int _built_in(char **tokens, char *filename, int counter)
 			free(new_path);
 			break;
 		}
-		index++;
-		free(new_path);
+		index++, free(new_path);
 	}
 	fd = access(tokens[0], F_OK);
 	if (fd == 0)
@@ -43,7 +42,8 @@ int _built_in(char **tokens, char *filename, int counter)
 		write(STDERR_FILENO, ": ", 3);
 		write(STDERR_FILENO, "1", 2), write(STDERR_FILENO, ": ", 3);
 		write(STDERR_FILENO, tokens[0], _strlen(tokens[0]));
-		write(STDERR_FILENO, ": ", 3), perror("");
+		write(STDERR_FILENO, ": ", 3);
+		write(STDERR_FILENO, "no found ", 10);
 	}
 	free(t_path), free(PATH);
 	return (status);
