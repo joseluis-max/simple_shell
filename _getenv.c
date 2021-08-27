@@ -8,7 +8,7 @@ char *_getenv(char *var_env)
 {
 	int i = 0;
 	char *copy;
-	char *env, *rel;
+	char *env, *rel, *r_copy;
 
 	while (environ[i] != NULL)
 	{       copy = _strdup(environ[i]);
@@ -16,10 +16,12 @@ char *_getenv(char *var_env)
 		if (_strcmp(env, var_env) == 0)
 		{
 			rel = strtok(NULL, "=");
+			r_copy = _strdup(rel);
 			free(env);
+			break;
 		}
 		i++;
 		free(copy);
 	}
-	return (rel);
+	return (r_copy);
 }

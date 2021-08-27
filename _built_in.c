@@ -8,8 +8,8 @@
  */
 int _built_in(char **tokens, char *filename, int counter)
 {
-	int index = 0, s_execve, status = 0;
-	char *new_path, *PATH, *slash;
+	int index = 0, status = 0;
+	char *new_path = NULL, *PATH = NULL, *slash = NULL;
 	char **t_path;
 	struct stat st;
 	int fd;
@@ -22,24 +22,29 @@ int _built_in(char **tokens, char *filename, int counter)
 		{
 			slash = _strcat(t_path[index], "/");
 			new_path = _strcat(slash, tokens[0]);
+			free(slash);
 		}
 		if (stat(new_path, &st) == 0)
 		{
 			status = 1;
-			s_execve = _execute(new_path, filename, tokens, counter);
-			free(slash);
+			_execute(new_path, filename, tokens, counter);
 			free(new_path);
 			break;
 		}
 		index++;
-		free(slash);
 		free(new_path);
 	}
 	fd = access(tokens[0], F_OK);
 	if (fd == 0)
 		_check_path(tokens, filename, counter);
 	if (status == 0 && fd == -1)
-		_print_error(filename, tokens[0], counter);
-	free(t_path);
-	return (s_execve);
+	{
+		write(STDERR_FILENO, filename, _strlen(filename));
+		write(STDERR_FILENO, ": ", 3);
+		write(STDERR_FILENO, "1", 2), write(STDERR_FILENO, ": ", 3);
+		write(STDERR_FILENO, tokens[0], _strlen(tokens[0]));
+		write(STDERR_FILENO, ": ", 3), perror("");
+	}
+	free(t_path), free(PATH);
+	return (status);
 }

@@ -7,9 +7,9 @@
  */
 size_t _strlen(char *s)
 {
-	size_t l;
+	size_t l = 0;
 
-	for (l = 0; s[l] != '\0'; l++)
-		;
+	while (s[l] != '\0')
+		l++;
 	return (l);
 }

@@ -27,6 +27,7 @@ char *_integer_to_string(int n)
 		div /= 10;
 		i++;
 	}
+	buffer[i] = '\0';
 	return (buffer);
 }
 /**
