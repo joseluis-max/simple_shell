@@ -22,8 +22,11 @@ int _execute_nb(char **tokens, char *buffer)
 		cmp_s = _strcmp(commands_no_built_in[index].command, tokens[0]);
 		if (cmp_s == 0)
 		{
-			free(tokens);
-			free(buffer);
+			if (_strcmp(commands_no_built_in[index].command, "exit") == 0)
+			{
+				free(tokens);
+				free(buffer);
+			}
 			noBuiltIn = commands_no_built_in[index].command_function;
 			noBuiltIn();
 			status = 1;

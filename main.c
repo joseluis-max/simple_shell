@@ -20,8 +20,8 @@ int main(int ac __attribute__((unused)), char *av[])
 		counter++;
 		if ((isatty(fileno(stdin))))
 			write(STDOUT_FILENO, "$ ", 3);
+		_signal();
 		len = getline(&buffer, &b_size, stdin);
-
 		if (len != -1)
 		{
 			if (buffer[0] == '\n')
@@ -42,6 +42,8 @@ int main(int ac __attribute__((unused)), char *av[])
 				write(STDOUT_FILENO, "\n", 1);
 			return (0);
 		}
+		else
+			free(buffer);
 	}
 	return (0);
 }
